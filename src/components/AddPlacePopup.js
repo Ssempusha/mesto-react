@@ -2,26 +2,12 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, renderLoading }) {
-/*   const placeNameRef = React.useRef();
-  const linkRef = React.useRef();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    onAddPlace({
-        //Значение инпута, полученное с помощью рефа
-        name: placeNameRef.current.value,
-        link: linkRef.current.value
-    });
-  } */
-
-  //-----------------
   const [name, setName] = React.useState("");
   const [link, setlink] = React.useState("");
 
   function handleSubmit(e) {
-    //Запрещаем браузеру переходить по адресу формы
     e.preventDefault(); 
-    //Передаём значения управляемых компонентов во внешний обработчик
     onAddPlace({
         name,
         link,
@@ -36,13 +22,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, renderLoading }) {
     setlink(e.target.value);
   }
 
-  //После загрузки текущего пользователя из API
-  //его данные будут использованы в управляемых компонентах.
+  //сброс текста при открытии
   React.useEffect(() => {
     setName("");
     setlink("");
   }, [isOpen]);
-  //--------------------------
 
   return (
     <PopupWithForm 
