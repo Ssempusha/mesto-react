@@ -11,6 +11,11 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, renderLoading }) {
     });
   }
 
+  //сброс текста при открытии
+  React.useEffect(() => {
+    avatarRef.current.value = "";
+  }, [isOpen]);
+
   return (
     <PopupWithForm 
       title="Обновить аватар"
